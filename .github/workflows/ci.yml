@@ -52,7 +52,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard: [0, 1]
+        shard: [0, 1, 2]
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -100,7 +100,7 @@ jobs:
         working-directory: backend
         run: |
           python -m pytest -p ci_shard -v --tb=short \
-            --ci-shard-count=2 --ci-shard-index=${{ matrix.shard }}
+            --ci-shard-count=3 --ci-shard-index=${{ matrix.shard }}
 
   backend-test-migrations:
     runs-on: ubuntu-latest
